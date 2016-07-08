@@ -56861,8 +56861,6 @@ modeBarButtons.pan2d = {
     click: handleCartesian
 };
 
-
-
 // modeBarButtons.lasso2d = {
 //     name: 'lasso2d',
 //     title: 'Lasso Select',
@@ -57676,10 +57674,10 @@ function getButtonGroups(gd, buttonsToRemove, buttonsToAdd) {
     var allAxesFixed = areAllAxesFixed(fullLayout),
         dragModeGroup = [];
 
-    if((hasCartesian || hasTernary) && isSelectable(fullData)) {
+    //if((hasCartesian || hasTernary) && isSelectable(fullData)) {
         dragModeGroup.push('select2d');
         //dragModeGroup.push('lasso2d');
-    }
+    //}
 
     if(((hasCartesian || hasGL2D) && !allAxesFixed) || hasTernary) {
         dragModeGroup = ['zoom2d', 'pan2d'];
