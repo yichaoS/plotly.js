@@ -56834,6 +56834,15 @@ var modeBarButtons = module.exports = {};
 //     }
 // };
 
+modeBarButtons.select2d = {
+    name: 'select2d',
+    title: 'Box Select',
+    attr: 'dragmode',
+    val: 'select',
+    icon: Icons.selectbox,
+    click: handleCartesian
+};
+
 modeBarButtons.zoom2d = {
     name: 'zoom2d',
     title: 'Zoom',
@@ -56852,14 +56861,7 @@ modeBarButtons.pan2d = {
     click: handleCartesian
 };
 
-modeBarButtons.select2d = {
-    name: 'select2d',
-    title: 'Box Select',
-    attr: 'dragmode',
-    val: 'select',
-    icon: Icons.selectbox,
-    click: handleCartesian
-};
+
 
 // modeBarButtons.lasso2d = {
 //     name: 'lasso2d',
@@ -57671,6 +57673,11 @@ function getButtonGroups(gd, buttonsToRemove, buttonsToAdd) {
     // buttons common to all plot types
     //addGroup(['toImage', 'sendDataToCloud']);
 
+    if((hasCartesian || hasTernary) && isSelectable(fullData)) {
+        dragModeGroup.push('select2d');
+        //dragModeGroup.push('lasso2d');
+    }
+
     // graphs with more than one plot types get 'union buttons'
     // which reset the view or toggle hover labels across all subplots.
     if((hasCartesian || hasGL2D || hasPie || hasTernary) + hasGeo + hasGL3D > 1) {
@@ -57695,10 +57702,7 @@ function getButtonGroups(gd, buttonsToRemove, buttonsToAdd) {
     if(((hasCartesian || hasGL2D) && !allAxesFixed) || hasTernary) {
         dragModeGroup = ['zoom2d', 'pan2d'];
     }
-    if((hasCartesian || hasTernary) && isSelectable(fullData)) {
-        dragModeGroup.push('select2d');
-        //dragModeGroup.push('lasso2d');
-    }
+
     if(dragModeGroup.length) addGroup(dragModeGroup);
 
     if((hasCartesian || hasGL2D) && !allAxesFixed && !hasTernary) {
