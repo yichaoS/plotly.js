@@ -56916,17 +56916,17 @@ modeBarButtons.hoverClosestCartesian = {
     click: handleCartesian
 };
 
-modeBarButtons.hoverCompareCartesian = {
-    name: 'hoverCompareCartesian',
-    title: 'Compare data on hover',
-    attr: 'hovermode',
-    val: function(gd) {
-        return gd._fullLayout._isHoriz ? 'y' : 'x';
-    },
-    icon: Icons.tooltip_compare,
-    gravity: 'ne',
-    click: handleCartesian
-};
+// modeBarButtons.hoverCompareCartesian = {
+//     name: 'hoverCompareCartesian',
+//     title: 'Compare data on hover',
+//     attr: 'hovermode',
+//     val: function(gd) {
+//         return gd._fullLayout._isHoriz ? 'y' : 'x';
+//     },
+//     icon: Icons.tooltip_compare,
+//     gravity: 'ne',
+//     click: handleCartesian
+// };
 
 var DRAGCURSORS = {
     pan: 'move',
@@ -57712,7 +57712,8 @@ function getButtonGroups(gd, buttonsToRemove, buttonsToAdd) {
         addGroup(['hoverClosestGl2d']);
     }
     else if(hasCartesian) {
-        addGroup(['hoverClosestCartesian', 'hoverCompareCartesian']);
+        //addGroup(['hoverClosestCartesian', 'hoverCompareCartesian']);
+        addGroup(['hoverClosestCartesian']);
     }
     else if(hasPie) {
         addGroup(['hoverClosestPie']);
