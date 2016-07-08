@@ -57680,8 +57680,8 @@ function getButtonGroups(gd, buttonsToRemove, buttonsToAdd) {
 
     if(((hasCartesian || hasGL2D) && !allAxesFixed) || hasTernary) {
         //dragModeGroup = ['zoom2d', 'pan2d'];
-        dragModeGroup.push('zoom2d');
         dragModeGroup.push('pan2d');
+        dragModeGroup.push('zoom2d');
     }
 
     if(dragModeGroup.length) addGroup(dragModeGroup);
