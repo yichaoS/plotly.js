@@ -57655,6 +57655,8 @@ function getButtonGroups(gd, buttonsToRemove, buttonsToAdd) {
         hasTernary = fullLayout._has('ternary');
 
     var groups = [];
+    var allAxesFixed = areAllAxesFixed(fullLayout),
+        dragModeGroup = [];
 
     function addGroup(newGroup) {
         var out = [];
@@ -57671,16 +57673,15 @@ function getButtonGroups(gd, buttonsToRemove, buttonsToAdd) {
     // buttons common to all plot types
     //addGroup(['toImage', 'sendDataToCloud']);
 
-    var allAxesFixed = areAllAxesFixed(fullLayout),
-        dragModeGroup = [];
-
-    //if((hasCartesian || hasTernary) && isSelectable(fullData)) {
+    if((hasCartesian || hasTernary) && isSelectable(fullData)) {
         dragModeGroup.push('select2d');
         //dragModeGroup.push('lasso2d');
-    //}
+    }
 
     if(((hasCartesian || hasGL2D) && !allAxesFixed) || hasTernary) {
-        dragModeGroup = ['zoom2d', 'pan2d'];
+        //dragModeGroup = ['zoom2d', 'pan2d'];
+        dragModeGroup.push('zoom2d');
+        dragModeGroup.push('pan2d');
     }
 
     if(dragModeGroup.length) addGroup(dragModeGroup);
