@@ -57673,6 +57673,9 @@ function getButtonGroups(gd, buttonsToRemove, buttonsToAdd) {
     // buttons common to all plot types
     //addGroup(['toImage', 'sendDataToCloud']);
 
+    var allAxesFixed = areAllAxesFixed(fullLayout),
+        dragModeGroup = [];
+
     if((hasCartesian || hasTernary) && isSelectable(fullData)) {
         dragModeGroup.push('select2d');
         //dragModeGroup.push('lasso2d');
@@ -57695,9 +57698,6 @@ function getButtonGroups(gd, buttonsToRemove, buttonsToAdd) {
         addGroup(['zoomInGeo', 'zoomOutGeo', 'resetGeo']);
         addGroup(['hoverClosestGeo']);
     }
-
-    var allAxesFixed = areAllAxesFixed(fullLayout),
-        dragModeGroup = [];
 
     if(((hasCartesian || hasGL2D) && !allAxesFixed) || hasTernary) {
         dragModeGroup = ['zoom2d', 'pan2d'];
