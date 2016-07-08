@@ -57681,6 +57681,12 @@ function getButtonGroups(gd, buttonsToRemove, buttonsToAdd) {
         //dragModeGroup.push('lasso2d');
     }
 
+    if(((hasCartesian || hasGL2D) && !allAxesFixed) || hasTernary) {
+        dragModeGroup = ['zoom2d', 'pan2d'];
+    }
+
+    if(dragModeGroup.length) addGroup(dragModeGroup);
+
     // graphs with more than one plot types get 'union buttons'
     // which reset the view or toggle hover labels across all subplots.
     if((hasCartesian || hasGL2D || hasPie || hasTernary) + hasGeo + hasGL3D > 1) {
@@ -57698,12 +57704,6 @@ function getButtonGroups(gd, buttonsToRemove, buttonsToAdd) {
         addGroup(['zoomInGeo', 'zoomOutGeo', 'resetGeo']);
         addGroup(['hoverClosestGeo']);
     }
-
-    if(((hasCartesian || hasGL2D) && !allAxesFixed) || hasTernary) {
-        dragModeGroup = ['zoom2d', 'pan2d'];
-    }
-
-    if(dragModeGroup.length) addGroup(dragModeGroup);
 
     if((hasCartesian || hasGL2D) && !allAxesFixed && !hasTernary) {
         addGroup(['zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d']);
