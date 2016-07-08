@@ -56801,38 +56801,38 @@ var modeBarButtons = module.exports = {};
  *      is the button a toggle button?
  */
 
-modeBarButtons.toImage = {
-    name: 'toImage',
-    title: 'Download plot as a png',
-    icon: Icons.camera,
-    click: function(gd) {
-        var format = 'png';
+// modeBarButtons.toImage = {
+//     name: 'toImage',
+//     title: 'Download plot as a png',
+//     icon: Icons.camera,
+//     click: function(gd) {
+//         var format = 'png';
+//
+//         Lib.notifier('Taking snapshot - this may take a few seconds', 'long');
+//
+//         if(Lib.isIE()) {
+//             Lib.notifier('IE only supports svg.  Changing format to svg.', 'long');
+//             format = 'svg';
+//         }
+//
+//         downloadImage(gd, {'format': format})
+//           .then(function(filename) {
+//               Lib.notifier('Snapshot succeeded - ' + filename, 'long');
+//           })
+//           .catch(function() {
+//               Lib.notifier('Sorry there was a problem downloading your snapshot!', 'long');
+//           });
+//     }
+// };
 
-        Lib.notifier('Taking snapshot - this may take a few seconds', 'long');
-
-        if(Lib.isIE()) {
-            Lib.notifier('IE only supports svg.  Changing format to svg.', 'long');
-            format = 'svg';
-        }
-
-        downloadImage(gd, {'format': format})
-          .then(function(filename) {
-              Lib.notifier('Snapshot succeeded - ' + filename, 'long');
-          })
-          .catch(function() {
-              Lib.notifier('Sorry there was a problem downloading your snapshot!', 'long');
-          });
-    }
-};
-
-modeBarButtons.sendDataToCloud = {
-    name: 'sendDataToCloud',
-    title: 'Save and edit plot in cloud',
-    icon: Icons.disk,
-    click: function(gd) {
-        Plotly.Plots.sendDataToCloud(gd);
-    }
-};
+// modeBarButtons.sendDataToCloud = {
+//     name: 'sendDataToCloud',
+//     title: 'Save and edit plot in cloud',
+//     icon: Icons.disk,
+//     click: function(gd) {
+//         Plotly.Plots.sendDataToCloud(gd);
+//     }
+// };
 
 modeBarButtons.zoom2d = {
     name: 'zoom2d',
@@ -56861,14 +56861,14 @@ modeBarButtons.select2d = {
     click: handleCartesian
 };
 
-modeBarButtons.lasso2d = {
-    name: 'lasso2d',
-    title: 'Lasso Select',
-    attr: 'dragmode',
-    val: 'lasso',
-    icon: Icons.lasso,
-    click: handleCartesian
-};
+// modeBarButtons.lasso2d = {
+//     name: 'lasso2d',
+//     title: 'Lasso Select',
+//     attr: 'dragmode',
+//     val: 'lasso',
+//     icon: Icons.lasso,
+//     click: handleCartesian
+// };
 
 modeBarButtons.zoomIn2d = {
     name: 'zoomIn2d',
@@ -57669,7 +57669,7 @@ function getButtonGroups(gd, buttonsToRemove, buttonsToAdd) {
     }
 
     // buttons common to all plot types
-    addGroup(['toImage', 'sendDataToCloud']);
+    //addGroup(['toImage', 'sendDataToCloud']);
 
     // graphs with more than one plot types get 'union buttons'
     // which reset the view or toggle hover labels across all subplots.
@@ -57697,7 +57697,7 @@ function getButtonGroups(gd, buttonsToRemove, buttonsToAdd) {
     }
     if((hasCartesian || hasTernary) && isSelectable(fullData)) {
         dragModeGroup.push('select2d');
-        dragModeGroup.push('lasso2d');
+        //dragModeGroup.push('lasso2d');
     }
     if(dragModeGroup.length) addGroup(dragModeGroup);
 
